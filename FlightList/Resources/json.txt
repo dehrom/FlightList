@@ -1,0 +1,314 @@
+{
+    "data": {
+        "best": [
+                 {
+                 "time": {
+                 "from": "21:00",
+                 "to": "7:50"
+                 },
+                 "duration": "6ч 50 мин.",
+                 "companyName": "Utair",
+                 "likePercent": 10,
+                 "cost": 212.21,
+                 "details": [
+                             {
+                             "title": "JFK, New York - CMN, Casablanka",
+                             "date": "30 мая 2018 г",
+                             "duration": "6ч 50 мин.",
+                             "time": {
+                             "from": "21:00",
+                             "to": "7:50"
+                             },
+                             "options": [
+                                         {
+                                         "name": "wifi",
+                                         "description": "WiFi is avaliable",
+                                         "avaliable": true
+                                         },
+                                         {
+                                         "name": "recharge",
+                                         "description": "Power outlets",
+                                         "avaliable": true
+                                         },
+                                         {
+                                         "name": "entertainment",
+                                         "description": "In-flight entertainment is not avaliable",
+                                         "avaliable": false
+                                         },
+                                         {
+                                         "name": "legroom",
+                                         "description": "Legroom average (31min)",
+                                         "avaliable": true
+                                         }
+                                         ],
+                             "companyName": "Utair"
+                             },
+                             {
+                             "title": "JFK, New York - CMN, Casablanka",
+                             "date": "30 мая 2018 г",
+                             "duration": "6ч 50 мин.",
+                             "time": {
+                             "from": "21:00",
+                             "to": "7:50"
+                             },
+                             "options": [
+                                         {
+                                         "name": "wifi",
+                                         "description": "WiFi is avaliable",
+                                         "avaliable": true
+                                         },
+                                         {
+                                         "name": "recharge",
+                                         "description": "Power outlets",
+                                         "avaliable": true
+                                         },
+                                         {
+                                         "name": "entertainment",
+                                         "description": "In-flight entertainment is not avaliable",
+                                         "avaliable": false
+                                         },
+                                         {
+                                         "name": "legroom",
+                                         "description": "Legroom is not avaliable",
+                                         "avaliable": false
+                                         }
+                                         ],
+                             "companyName": "Utair"
+                             }
+                             ]
+                 }
+                 ],
+        "other": [
+                  {
+                  "time": {
+                  "from": "21:00",
+                  "to": "7:50"
+                  },
+                  "duration": "6ч 50 мин.",
+                  "companyName": "Utair",
+                  "likePercent": 10,
+                  "cost": 212.21,
+                  "details": [
+                              {
+                              "title": "JFK, New York - CMN, Casablanka",
+                              "date": "30 мая 2018 г",
+                              "duration": "6ч 50 мин.",
+                              "time": {
+                              "from": "21:00",
+                              "to": "7:50"
+                              },
+                              "options": [
+                                          {
+                                          "name": "wifi",
+                                          "description": "WiFi is avaliable",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "recharge",
+                                          "description": "Power outlets",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "entertainment",
+                                          "description": "In-flight entertainment is not avaliable",
+                                          "avaliable": false
+                                          },
+                                          {
+                                          "name": "legroom",
+                                          "description": "Legroom is not avaliable",
+                                          "avaliable": false
+                                          }
+                                          ],
+                              "companyName": "Utair"
+                              },
+                              {
+                              "title": "JFK, New York - CMN, Casablanka",
+                              "date": "30 мая 2018 г",
+                              "duration": "6ч 50 мин.",
+                              "time": {
+                              "from": "21:00",
+                              "to": "7:50"
+                              },
+                              "options": [
+                                          {
+                                          "name": "wifi",
+                                          "description": "WiFi is avaliable",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "recharge",
+                                          "description": "Power outlets",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "entertainment",
+                                          "description": "In-flight entertainment is not avaliable",
+                                          "avaliable": false
+                                          },
+                                          {
+                                          "name": "legroom",
+                                          "description": "Legroom is not avaliable",
+                                          "avaliable": false
+                                          }
+                                          ],
+                              "companyName": "Utair"
+                              }
+                              ]
+                  },
+                  {
+                  "time": {
+                  "from": "21:00",
+                  "to": "7:50"
+                  },
+                  "duration": "6ч 50 мин.",
+                  "companyName": "Utair",
+                  "likePercent": 10,
+                  "cost": 212.21,
+                  "details": [
+                              {
+                              "title": "JFK, New York - CMN, Casablanka",
+                              "date": "30 мая 2018 г",
+                              "duration": "6ч 50 мин.",
+                              "time": {
+                              "from": "21:00",
+                              "to": "7:50"
+                              },
+                              "options": [
+                                          {
+                                          "name": "wifi",
+                                          "description": "WiFi is avaliable",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "recharge",
+                                          "description": "Power outlets",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "entertainment",
+                                          "description": "In-flight entertainment is not avaliable",
+                                          "avaliable": false
+                                          },
+                                          {
+                                          "name": "legroom",
+                                          "description": "Legroom is not avaliable",
+                                          "avaliable": false
+                                          }
+                                          ],
+                              "companyName": "Utair"
+                              },
+                              {
+                              "title": "JFK, New York - CMN, Casablanka",
+                              "date": "30 мая 2018 г",
+                              "duration": "6ч 50 мин.",
+                              "time": {
+                              "from": "21:00",
+                              "to": "7:50"
+                              },
+                              "options": [
+                                          {
+                                          "name": "wifi",
+                                          "description": "WiFi is avaliable",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "recharge",
+                                          "description": "Power outlets",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "entertainment",
+                                          "description": "In-flight entertainment is not avaliable",
+                                          "avaliable": false
+                                          },
+                                          {
+                                          "name": "legroom",
+                                          "description": "Legroom is not avaliable",
+                                          "avaliable": false
+                                          }
+                                          ],
+                              "companyName": "Utair"
+                              }
+                              ]
+                  },
+                  {
+                  "time": {
+                  "from": "21:00",
+                  "to": "7:50"
+                  },
+                  "duration": "6ч 50 мин.",
+                  "companyName": "Utair",
+                  "likePercent": 10,
+                  "cost": 212.21,
+                  "details": [
+                              {
+                              "title": "JFK, New York - CMN, Casablanka",
+                              "date": "30 мая 2018 г",
+                              "duration": "6ч 50 мин.",
+                              "time": {
+                              "from": "21:00",
+                              "to": "7:50"
+                              },
+                              "options": [
+                                          {
+                                          "name": "wifi",
+                                          "description": "WiFi is avaliable",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "recharge",
+                                          "description": "Power outlets",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "entertainment",
+                                          "description": "In-flight entertainment is not avaliable",
+                                          "avaliable": false
+                                          },
+                                          {
+                                          "name": "legroom",
+                                          "description": "Legroom is not avaliable",
+                                          "avaliable": false
+                                          }
+                                          ],
+                              "companyName": "Utair"
+                              },
+                              {
+                              "title": "JFK, New York - CMN, Casablanka",
+                              "date": "30 мая 2018 г",
+                              "duration": "6ч 50 мин.",
+                              "time": {
+                              "from": "21:00",
+                              "to": "7:50"
+                              },
+                              "options": [
+                                          {
+                                          "name": "wifi",
+                                          "description": "WiFi is avaliable",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "recharge",
+                                          "description": "Power outlets",
+                                          "avaliable": true
+                                          },
+                                          {
+                                          "name": "entertainment",
+                                          "description": "In-flight entertainment is not avaliable",
+                                          "avaliable": false
+                                          },
+                                          {
+                                          "name": "legroom",
+                                          "description": "Legroom is not avaliable",
+                                          "avaliable": false
+                                          }
+                                          ],
+                              "companyName": "Utair"
+                              }
+                              ]
+                  }
+                  ]
+    },
+    "currentPage": 1,
+    "totalPage": 1
+}
