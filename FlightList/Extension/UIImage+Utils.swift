@@ -10,8 +10,8 @@ import UIKit
 
 extension UIImage {
     func resizeImage(newWidth: CGFloat) -> UIImage {
-        let scale = newWidth / size.width
-        let newHeight = size.height * scale
+        let delta = newWidth / size.width
+        let newHeight = size.height * delta
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         
