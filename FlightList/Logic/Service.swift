@@ -9,7 +9,7 @@
 import Foundation
 import PromiseKit
 
-protocol ServiceProtocol {
+protocol ServiceProtocol: class {
     func fetchFlights() -> Promise<DTOModel>
 }
 

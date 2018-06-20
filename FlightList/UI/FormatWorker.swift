@@ -17,7 +17,7 @@ class FormatWorker: FormatWorkerProtocol {
         let durationImage = image(for: "clock", width: 15, fillColor: .white)
         let defaultData = SectionViewModel.RowViewModel.DefaultData(
             time: NSAttributedString(string: "\(rawData.time.from) - \(rawData.time.to)", attributedStyle: .title),
-            duration: .init(image: durationImage, string: rawData.duration, attributedStyle: .duration), //string(with: durationImage, and: rawData.duration, textStyle: .duration),
+            duration: .init(image: durationImage, string: rawData.duration, attributedStyle: .duration),
             companyImage: image(for: rawData.companyName, width: 40),
             companyName: NSAttributedString(string: rawData.companyName, attributedStyle: .title),
             likePercent: attributedString(for: rawData.likePercent),

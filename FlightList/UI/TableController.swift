@@ -45,10 +45,8 @@ extension TableController: ASTableDelegate {
     
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
         guard let cellNode = tableNode.nodeForRow(at: indexPath) as? CellNode else { return }
-        DispatchQueue.main.async {
-            cellNode.isInExpandedMode = !cellNode.isInExpandedMode
-            cellNode.transitionLayout(withAnimation: true, shouldMeasureAsync: false, measurementCompletion: nil)            
-        }
+        cellNode.isInExpandedMode = !cellNode.isInExpandedMode
+        cellNode.transitionLayout(withAnimation: true, shouldMeasureAsync: false, measurementCompletion: nil)
     }
     
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
