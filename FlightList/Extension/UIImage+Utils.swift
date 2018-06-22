@@ -14,13 +14,13 @@ extension UIImage {
         let newHeight = size.height * delta
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        
+
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return newImage ?? self
     }
-    
+
     func apply(color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         defer { UIGraphicsEndImageContext() }

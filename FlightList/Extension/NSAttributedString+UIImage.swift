@@ -18,7 +18,7 @@ extension NSAttributedString {
         resultString.append(NSAttributedString(string: string, attributedStyle: attributedStyle))
         self.init(attributedString: resultString)
     }
-    
+
     convenience init(string: String, attributedStyle: TextStyle.StyleType) {
         self.init(string: string, attributes: attributedStyle.style)
     }

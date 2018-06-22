@@ -6,15 +6,15 @@
 //  Copyright © 2018 mynight. All rights reserved.
 //
 
-import UIKit
 import AsyncDisplayKit
 import PromiseKit
+import UIKit
 
 class ViewController: ASViewController<ASTableNode> {
     let tableController: TableController
     let tableNode: ASTableNode
     let viewModel: ViewModelProtocol
-    
+
     init(tableController: TableController = TableController(), viewModel: ViewModelProtocol = ViewModel()) {
         self.tableController = tableController
         self.viewModel = viewModel
@@ -24,14 +24,14 @@ class ViewController: ASViewController<ASTableNode> {
         tableNode.dataSource = tableController
         tableNode.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         super.init(node: tableNode)
-        
+
         self.tableController.delegate = self
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         let titleView = TitleView()
         let text = NSAttributedString(image: UIImage(named: "magnifying-glass")!.resizeImage(newWidth: 15), string: "RCB - NSA, 1 Apr", attributedStyle: .title)

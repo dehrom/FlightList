@@ -22,22 +22,20 @@ extension Service {
 
 class Service: ServiceProtocol {
     func fetchFlights() -> Promise<DTOModel> {
-        return firstly {
-            Promise { seal in
-                seal.fulfill(try getData())
-            }.then { (data: Data) -> Promise<DTOModel> in
-                return .value(try self.transform(data))
-            }.recover {
-                return Promise(error: Error.underlying(error: $0))
-            }
+        return Promise { seal in
+            seal.fulfill(try getData())
+        }.then { (data: Data) -> Promise<DTOModel> in
+            .value(try self.transform(data))
+        }.recover {
+            Promise(error: Error.underlying(error: $0))
         }
     }
-    
+
     private func getData() throws -> Data {
         guard let path = Bundle.main.path(forResource: "json", ofType: "txt") else { throw Error.noData }
         return try Data(contentsOf: URL(fileURLWithPath: path))
     }
-    
+
     private func transform(_ data: Data) throws -> DTOModel {
         return try JSONDecoder().decode(DTOModel.self, from: data)
     }

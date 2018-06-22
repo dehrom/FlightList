@@ -34,19 +34,19 @@ class FormatWorker: FormatWorkerProtocol {
         }
         return .init(default: defaultData, extended: extendedData, selectionStyle: .none)
     }
-    
+
     private func image(for companyName: String, width: CGFloat, fillColor: UIColor? = nil) -> UIImage {
         guard var sizedImage = UIImage(named: companyName.lowercased())?.resizeImage(newWidth: width) else { return UIImage() }
         sizedImage = fillColor.map(sizedImage.apply(color:)) ?? sizedImage
         return sizedImage
     }
-    
+
     private func attributedString(for likeCount: Int?) -> NSAttributedString {
         guard let likeCount = likeCount else { return NSAttributedString() }
-        let image = self.image(for: "like", width: 13, fillColor: UIColor.gray)
+        let image = self.image(for: "like", width: 13, fillColor: .gray)
         return .init(image: image, string: "\(likeCount)%", attributedStyle: .like)
     }
-    
+
     private func attributedStrings(for options: [DTOModel.Option]) -> [NSAttributedString] {
         return options.map {
             let color = $0.avaliable ? UIColor.black.withAlphaComponent(0.9) : UIColor.lightGray
@@ -55,4 +55,3 @@ class FormatWorker: FormatWorkerProtocol {
         }
     }
 }
-

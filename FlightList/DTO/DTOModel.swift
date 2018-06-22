@@ -12,12 +12,12 @@ struct DTOModel: Codable {
     let data: Data
     let currentPage: Int
     let totalPage: Int
-    
+
     struct Data: Codable {
         let best: [RawData]
         let other: [RawData]
     }
-    
+
     struct RawData: Codable {
         let time: Time
         let duration: String
@@ -26,7 +26,7 @@ struct DTOModel: Codable {
         let cost: Double
         let details: [Details]
     }
-    
+
     struct Details: Codable {
         let title: String
         let date: String
@@ -35,12 +35,12 @@ struct DTOModel: Codable {
         let options: [Option]
         let companyName: String
     }
-    
+
     struct Time: Codable {
         let from: String
         let to: String
     }
-    
+
     struct Option: Codable {
         let name: String
         let description: String

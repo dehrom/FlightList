@@ -11,12 +11,12 @@ import UIKit
 struct SectionViewModel {
     let title: String
     let rows: [RowViewModel]
-    
+
     struct RowViewModel {
         let `default`: DefaultData
         let extended: [ExtendedData]
         let selectionStyle: UITableViewCellSelectionStyle
-        
+
         struct DefaultData {
             let time: NSAttributedString
             let duration: NSAttributedString
@@ -25,7 +25,7 @@ struct SectionViewModel {
             let likePercent: NSAttributedString
             let cost: NSAttributedString
         }
-        
+
         struct ExtendedData {
             let title: NSAttributedString
             let date: NSAttributedString

@@ -21,7 +21,7 @@ extension TitleView {
 
 class TitleView: UIView {
     private let appearance: Appearance
-    
+
     private lazy var titleLabel: UILabel = {
         var view = UILabel()
         view.font = appearance.titleFont
@@ -30,25 +30,25 @@ class TitleView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     init(appearance: Appearance = Appearance()) {
         self.appearance = appearance
         super.init(frame: .zero)
         setupViews()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func configure(with text: NSAttributedString) {
         titleLabel.attributedText = text
         titleLabel.sizeToFit()
     }
-    
+
     private func setupViews() {
         addSubview(titleLabel)
-        
+
         NSLayoutConstraint.activate([
             .init(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: self,
                   attribute: .left, multiplier: 1, constant: appearance.titleInset),
@@ -57,13 +57,11 @@ class TitleView: UIView {
             .init(item: titleLabel, attribute: .right, relatedBy: .equal, toItem: self,
                   attribute: .right, multiplier: 1, constant: -appearance.titleInset),
             .init(item: titleLabel, attribute: .bottom, relatedBy: .equal, toItem: self,
-                  attribute: .bottom, multiplier: 1, constant: -appearance.titleInset)
+                  attribute: .bottom, multiplier: 1, constant: -appearance.titleInset),
         ])
 
         layer.cornerRadius = appearance.viewCornerRadius
         layer.borderWidth = appearance.viewBorderWidth
         layer.borderColor = appearance.viewBorderColor
     }
-    
-    
 }
