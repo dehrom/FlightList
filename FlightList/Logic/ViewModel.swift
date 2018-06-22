@@ -9,31 +9,47 @@
 import Foundation
 import PromiseKit
 
-typealias FetchDataResultType = (models: [SectionViewModel], hasMorePages: Bool)
+typealias FetchDataResultType = (sections: [SectionViewModel], hasMorePages: Bool)
 
 protocol ViewModelProtocol: class {
-    func getFlights() -> Promise<FetchDataResultType>
+    func getFlights() -> Guarantee<FetchDataResultType>
+}
+
+extension ViewModel {
+    enum Error: Swift.Error {
+        case transportError(String)
+        case translateError(String)
+    }
 }
 
 class ViewModel: ViewModelProtocol {
     let service: ServiceProtocol
-    let worker: FormatWorkerProtocol
+    let dtoTranslator: DTOTranslator
+    let errorTranslator: ErrorTranslator
+    let sectionViewModelTranslator: SectionViewModelTranslator
 
-    init(service: ServiceProtocol = Service(), worker: FormatWorkerProtocol = FormatWorker()) {
+    init(
+        service: ServiceProtocol = Service(),
+        dtoTranslator: DTOTranslator = DTOTranslator(),
+        errorTranslator: ErrorTranslator = ErrorTranslator(),
+        sectionViewModelTranslator: SectionViewModelTranslator = SectionViewModelTranslator()
+    ) {
         self.service = service
-        self.worker = worker
+        self.dtoTranslator = dtoTranslator
+        self.errorTranslator = errorTranslator
+        self.sectionViewModelTranslator = sectionViewModelTranslator
     }
 
-    func getFlights() -> Promise<FetchDataResultType> {
-        return service.fetchFlights().map(on: .global(qos: .utility)) { dto -> FetchDataResultType in
-            (self.transform(dto: dto), dto.currentPage < dto.totalPage)
+    func getFlights() -> Guarantee<FetchDataResultType> {
+        return firstly {
+            service.fetchData()
+        }.then { data in
+            self.dtoTranslator.translate(data)
+        }.map { dto in
+            (try self.sectionViewModelTranslator.translate(dto), dto.currentPage < dto.totalPage)
+        }.recover { error in
+            print(error)
+            return .value(self.errorTranslator.translate(error, def: ([], false)))
         }
-    }
-
-    private func transform(dto: DTOModel) -> [SectionViewModel] {
-        return [
-            .init(title: "Best match", rows: dto.data.best.map(worker.transform(rawData:))),
-            .init(title: "Others", rows: dto.data.other.map(worker.transform(rawData:))),
-        ]
     }
 }

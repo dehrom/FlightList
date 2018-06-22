@@ -10,33 +10,38 @@ import Foundation
 import PromiseKit
 
 protocol ServiceProtocol: class {
-    func fetchFlights() -> Promise<DTOModel>
+    func fetchData() -> Promise<Data>
 }
 
 extension Service {
     enum Error: Swift.Error {
-        case noData
+        case invalidPath(String)
         case underlying(error: Swift.Error)
+
+        var localizedDescription: String {
+            switch self {
+            case let .invalidPath(message):
+                return message
+            case let .underlying(error: error):
+                return error.localizedDescription
+            }
+        }
     }
 }
 
 class Service: ServiceProtocol {
-    func fetchFlights() -> Promise<DTOModel> {
-        return Promise { seal in
-            seal.fulfill(try getData())
-        }.then { (data: Data) -> Promise<DTOModel> in
-            .value(try self.transform(data))
-        }.recover {
-            Promise(error: Error.underlying(error: $0))
+    func fetchData() -> Promise<Data> {
+        return Promise<Data> { seal in
+            do {
+                guard let path = Bundle.main.path(forResource: "json", ofType: "txt") else {
+                    seal.reject(Error.invalidPath("The path for resource is nil"))
+                    return
+                }
+                let data = try Data(contentsOf: URL(fileURLWithPath: path))
+                seal.fulfill(data)
+            } catch {
+                seal.reject(Error.underlying(error: error))
+            }
         }
-    }
-
-    private func getData() throws -> Data {
-        guard let path = Bundle.main.path(forResource: "json", ofType: "txt") else { throw Error.noData }
-        return try Data(contentsOf: URL(fileURLWithPath: path))
-    }
-
-    private func transform(_ data: Data) throws -> DTOModel {
-        return try JSONDecoder().decode(DTOModel.self, from: data)
     }
 }

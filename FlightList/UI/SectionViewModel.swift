@@ -9,8 +9,13 @@
 import UIKit
 
 struct SectionViewModel {
-    let title: String
-    let rows: [RowViewModel]
+    let title: String?
+    let rows: [RowType]
+
+    enum RowType {
+        case data(RowViewModel)
+        case message(NSAttributedString)
+    }
 
     struct RowViewModel {
         let `default`: DefaultData

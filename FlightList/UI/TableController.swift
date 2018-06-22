@@ -11,7 +11,7 @@ import Foundation
 import PromiseKit
 
 protocol TableControllerDelegate: class {
-    func fetchData() -> Promise<FetchDataResultType>
+    func fetchData() -> Guarantee<FetchDataResultType>
 }
 
 extension TableController {
@@ -23,8 +23,8 @@ extension TableController {
 
 class TableController: NSObject {
     private let configuration: Configuration
-    private var models: [SectionViewModel] = []
     weak var delegate: TableControllerDelegate?
+    private var sections: [SectionViewModel] = []
 
     private lazy var nodeSize: ASSizeRange = {
         let width = UIScreen.main.bounds.width
@@ -40,7 +40,7 @@ class TableController: NSObject {
 
 extension TableController: ASTableDelegate {
     func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return models[section].title
+        return sections[section].title
     }
 
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
@@ -58,34 +58,38 @@ extension TableController: ASTableDelegate {
     }
 
     func tableNode(_ tableNode: ASTableNode, willBeginBatchFetchWith context: ASBatchContext) {
-        let block: ([SectionViewModel]) -> IndexSet = { [models] data in
-            let totalSectionsCountRange = (models.count ..< models.count + data.count)
+        let block: ([SectionViewModel]) -> IndexSet = { [sections] data in
+            let totalSectionsCountRange = (sections.count ..< sections.count + data.count)
             return .init(integersIn: totalSectionsCountRange)
         }
+
         context.beginBatchFetching()
-        delegate?.fetchData().done(on: .main) { response in
-            self.models.append(contentsOf: response.models)
-            tableNode.insertSections(block(response.models), with: .none)
-            context.completeBatchFetching(response.hasMorePages)
-        }.catch {
-            print($0.localizedDescription)
-            context.completeBatchFetching(false)
+        delegate?.fetchData().done { data in
+            self.sections.append(contentsOf: data.sections)
+            tableNode.insertSections(block(data.sections), with: .none)
+            context.completeBatchFetching(data.hasMorePages)
         }
     }
 }
 
 extension TableController: ASTableDataSource {
     func numberOfSections(in _: ASTableNode) -> Int {
-        return models.count
+        return sections.count
     }
 
     func tableNode(_: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return models[section].rows.count
+        return sections[section].rows.count
     }
 
     func tableNode(_: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        return { [viewModel = models[indexPath.section].rows[indexPath.row]] in
-            CellNode(viewModel: viewModel)
+        return {
+            let viewModel = self.sections[indexPath.section].rows[indexPath.row]
+            switch viewModel {
+            case let .data(rowViewModel):
+                return CellNode(viewModel: rowViewModel)
+            case let .message(errorMessage):
+                return ErrorNode(errorMessage: errorMessage)
+            }
         }
     }
 }

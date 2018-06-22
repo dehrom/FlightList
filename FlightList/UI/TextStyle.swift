@@ -34,10 +34,14 @@ struct TextStyle {
             .font: UIFont.systemFont(ofSize: 13, weight: .thin),
             .foregroundColor: UIColor.black,
         ],
+        .error: [
+            .font: UIFont.systemFont(ofSize: 22, weight: .heavy),
+            .foregroundColor: UIColor.lightGray,
+        ],
     ]
 
     enum StyleType {
-        case title, text, duration, like, cost, option
+        case title, text, duration, like, cost, option, error
 
         var style: [NSAttributedStringKey: Any] {
             return styles[self]!

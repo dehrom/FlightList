@@ -1,5 +1,5 @@
 //
-//  FormatWorker.swift
+//  RowViewModelTranslator.swift
 //  FlightList
 //
 //  Created by Валерий Коканов on 20.06.2018.
@@ -8,21 +8,19 @@
 
 import UIKit
 
-protocol FormatWorkerProtocol: class {
-    func transform(rawData: DTOModel.RawData) -> SectionViewModel.RowViewModel
-}
-
-class FormatWorker: FormatWorkerProtocol {
-    func transform(rawData: DTOModel.RawData) -> SectionViewModel.RowViewModel {
+class RowViewModelTranslator: TranslatorProtocol {
+    func translate(_ obj: DTOModel.RawData) throws -> SectionViewModel.RowViewModel {
         let durationImage = image(for: "clock", width: 15, fillColor: .white)
+        
         let defaultData = SectionViewModel.RowViewModel.DefaultData(
-            time: NSAttributedString(string: "\(rawData.time.from) - \(rawData.time.to)", attributedStyle: .title),
-            duration: .init(image: durationImage, string: rawData.duration, attributedStyle: .duration),
-            companyImage: image(for: rawData.companyName, width: 40),
-            companyName: NSAttributedString(string: rawData.companyName, attributedStyle: .title),
-            likePercent: attributedString(for: rawData.likePercent),
-            cost: NSAttributedString(string: "$\(rawData.cost)", attributedStyle: .cost))
-        let extendedData = rawData.details.map { detail -> SectionViewModel.RowViewModel.ExtendedData in
+            time: NSAttributedString(string: "\(obj.time.from) - \(obj.time.to)", attributedStyle: .title),
+            duration: .init(image: durationImage, string: obj.duration, attributedStyle: .duration),
+            companyImage: image(for: obj.companyName, width: 40),
+            companyName: NSAttributedString(string: obj.companyName, attributedStyle: .title),
+            likePercent: attributedString(for: obj.likePercent),
+            cost: NSAttributedString(string: "$\(obj.cost)", attributedStyle: .cost))
+        
+        let extendedData = obj.details.map { detail -> SectionViewModel.RowViewModel.ExtendedData in
             return .init(
                 title: NSAttributedString(string: detail.title, attributedStyle: .title),
                 date: NSAttributedString(string: detail.date, attributedStyle: .text),

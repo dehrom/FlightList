@@ -24,7 +24,6 @@ class ViewController: ASViewController<ASTableNode> {
         tableNode.dataSource = tableController
         tableNode.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         super.init(node: tableNode)
-
         self.tableController.delegate = self
     }
 
@@ -34,14 +33,18 @@ class ViewController: ASViewController<ASTableNode> {
 
     override func viewDidLoad() {
         let titleView = TitleView()
-        let text = NSAttributedString(image: UIImage(named: "magnifying-glass")!.resizeImage(newWidth: 15), string: "RCB - NSA, 1 Apr", attributedStyle: .title)
+        let text = NSAttributedString(
+            image: UIImage(named: "magnifying-glass")!.resizeImage(newWidth: 15),
+            string: "RCB - NSA, 1 Apr",
+            attributedStyle: .title
+        )
         titleView.configure(with: text)
         navigationItem.titleView = titleView
     }
 }
 
 extension ViewController: TableControllerDelegate {
-    func fetchData() -> Promise<FetchDataResultType> {
+    func fetchData() -> Guarantee<FetchDataResultType> {
         return viewModel.getFlights()
     }
 }
