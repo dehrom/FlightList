@@ -44,7 +44,7 @@ extension TableController: ASTableDelegate {
     }
 
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        guard let cellNode = tableNode.nodeForRow(at: indexPath) as? CellNode else { return }
+        guard let cellNode = tableNode.nodeForRow(at: indexPath) as? DataCellNode else { return }
         cellNode.isInExpandedMode = !cellNode.isInExpandedMode
         cellNode.transitionLayout(withAnimation: true, shouldMeasureAsync: false, measurementCompletion: nil)
     }
@@ -86,9 +86,9 @@ extension TableController: ASTableDataSource {
             let viewModel = self.sections[indexPath.section].rows[indexPath.row]
             switch viewModel {
             case let .data(rowViewModel):
-                return CellNode(viewModel: rowViewModel)
+                return DataCellNode(viewModel: rowViewModel)
             case let .message(errorMessage):
-                return ErrorNode(errorMessage: errorMessage)
+                return ErrorCellNode(errorMessage: errorMessage)
             }
         }
     }

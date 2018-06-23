@@ -8,7 +8,7 @@
 
 import AsyncDisplayKit
 
-class CellNode: ASCellNode {
+class DataCellNode: ASCellNode {
     let viewModel: SectionViewModel.RowViewModel
     var isInExpandedMode = false
 

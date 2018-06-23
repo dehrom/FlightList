@@ -1,5 +1,5 @@
 //
-//  ErrorNode.swift
+//  ErrorCellNode.swift
 //  FlightList
 //
 //  Created by Валерий Коканов on 22.06.2018.
@@ -9,7 +9,7 @@
 import AsyncDisplayKit
 import Foundation
 
-class ErrorNode: ASCellNode {
+class ErrorCellNode: ASCellNode {
     lazy var textNode = ASTextNode()
 
     init(errorMessage: NSAttributedString) {

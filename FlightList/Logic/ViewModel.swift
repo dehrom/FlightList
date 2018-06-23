@@ -15,13 +15,6 @@ protocol ViewModelProtocol: class {
     func getFlights() -> Guarantee<FetchDataResultType>
 }
 
-extension ViewModel {
-    enum Error: Swift.Error {
-        case transportError(String)
-        case translateError(String)
-    }
-}
-
 class ViewModel: ViewModelProtocol {
     let service: ServiceProtocol
     let dtoTranslator: DTOTranslator
